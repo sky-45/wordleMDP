@@ -54,5 +54,5 @@ def saveWordsFile():
     file1 = open("palabras5.txt","w")
     words_newline = [k+"\n" for k in words]
     file1.writelines(words_newline)
-    file1.close() #to change file access modes
+    file1.close()
 
