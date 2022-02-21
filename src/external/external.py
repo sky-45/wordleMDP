@@ -5,6 +5,13 @@ import random
 # Functions to handle the words avaliable for the game
 
 # fecth data from repo
+
+def getRandomWord(src= "github"):
+    if src == "github":
+        return getWordsGitHub(1)
+    else:
+        return getWordsLocalFile(1)
+
 def getWordsGitHub(n):
     """
         This function retrieves 365 random words from 
@@ -15,8 +22,7 @@ def getWordsGitHub(n):
     words = r.text.split("\n")
     words = [cleanWord(word) for word in words if len(word)==5]
     words_5 = random.sample(words, 365)
-    print("total words avaliable: ",len(words))
-    return words_5[:n]
+    return random.sample(words_5,n)
 
 def getWordsLocalFile(n):
     """
@@ -25,9 +31,9 @@ def getWordsLocalFile(n):
     """
     file1 = open("palabras5.txt","r+") 
     lines = file1.readlines()
-    words_5 = [line[:-2] for line in lines]
+    words_5 = [line[:-1] for line in lines]
     file1.close()
-    return words_5[:n]
+    return random.sample(words_5,n)
 
 #-----helpers
 def cleanWord(word):
@@ -55,4 +61,3 @@ def saveWordsFile():
     words_newline = [k+"\n" for k in words]
     file1.writelines(words_newline)
     file1.close()
-

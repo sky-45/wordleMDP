@@ -4,32 +4,31 @@ from src import console
 
 # iniciamos juego
 transitions.startGame()
+gameIsRunning = True
 
-game = Game()
-while (game.attemps<6):
-    game.renderVisuals() # imprime mapa y teclado
-    word = console.enterData().upper()
-    game.update(word) # actualiza estados internos cn datos ingresados
-    
-    if word == game.answer:
-        game.winingState = True
+while gameIsRunning:
+    data = transitions.getData()
+    game = Game(data["option"],data["name"])
+
+    while (game.attemps<6):
+        game.renderVisuals() # imprime mapa y teclado
+        word = console.enterData().upper()
+        game.update(word)
+        if word == game.answer:
+            game.winingState = True
+            game.renderVisuals()
+            break
+    if game.winingState:
+        # do something congratulating the player
+        transitions.winGame(game.answer)
+
+    else:
+        # do something to say end game and ask if he wishes to play again
         game.renderVisuals()
-        break
-    #game.saveData()
-if game.winingState:
-    # do something congraulating the player
-    print("##################################")
-    print("##################################")
-    print("############ GANASTE #############")
-    print("##################################")
-    print("##################################")
+        transitions.loseGame(game.answer)
     
-else:
-    # do something to say end game and ask if he wshes to play again
-    print("##################################")
-    print("##################################")
-    print("############ PERDISTE ############")
-    print("##################################")
-    print("##################################")
+    game.saveData()
+    game.renderSummary()
+    gameIsRunning = transitions.startNewGame()
 
 

@@ -1,5 +1,5 @@
 from termcolor import colored
-from colorama import init, Fore, Back, Style
+from colorama import init, Fore, Back
 
 init(autoreset=True)
 

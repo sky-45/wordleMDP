@@ -9,7 +9,7 @@ def clearConsole():
 def enterData():
     while True:
         guess = input("Ingrese su respuesta: ")
-
+        guess = guess.strip() #limpiamos espacios
         if validateInput(guess) and len(guess)==5:
             return guess
         else:
