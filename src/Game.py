@@ -9,7 +9,7 @@ class Game:
     def __init__(self,dataSrc,name):
         self.dataSrc = dataSrc
         self.player = name
-        #self.answer = "JOHAN" #TODO:replace with random word from dictionary
+        #self.answer = "JOHAN" #respuesta para testing
         self.answer = self.getWord()
         self.attemps = 0
         self.usedLetters = []
@@ -22,9 +22,6 @@ class Game:
             return external.getWordsGitHub(1)[0].upper()
         elif self.dataSrc==2: #local
             return external.getWordsLocalFile(1)[0].upper()
-    def initscreen(self):
-        console.clearConsole()
-        #atempt = console.enterData()
     def update(self,word):
         self.usedWords.append(word)
         self.updateUsedChars(word)
@@ -50,7 +47,6 @@ class Game:
         jsonData["answer"] = self.answer
         jsonData["result"] = "win" if self.winingState else "lose"
         jsonData["atempts"] = self.attempsArr
-        #print(jsonData)
         self.write_json(jsonData)
     def renderSummary(self):
         console.clearConsole()
@@ -61,12 +57,8 @@ class Game:
         input("Presione enter para continuar ...")
     def write_json(self,new_data, filename='records.json'):
         with open(filename,'r+') as file:
-            # First we load existing data into a dict.
             file_data = json.load(file)
-            # Join new_data with file_data inside emp_details
             file_data[self.startTime] = new_data
-            # Sets file's current position at offset.
             file.seek(0)
-            # convert back to json.
             json.dump(file_data, file, indent = 4)
  

@@ -1,6 +1,4 @@
-from termcolor import colored
 from colorama import init, Fore, Back, Style
-from src import console
 
 init(autoreset=True)
 

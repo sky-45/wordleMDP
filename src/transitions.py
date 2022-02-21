@@ -117,6 +117,3 @@ def startNewGame():
         else:
             print("Solo puede ingresar el numero correspondiente a la opcion !!!")
         time.sleep(4)
-    #print(data)
-    option = True
-    return option

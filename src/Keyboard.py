@@ -1,4 +1,3 @@
-from termcolor import colored
 from colorama import init, Fore, Back
 
 init(autoreset=True)
@@ -9,7 +8,7 @@ class Keyboard:
     row_2_letters = ["A","S","D","F","G","H","J","K","L","Ñ"]
     row_3_letters = ["Z","X","C","V","B","N","M"]
 
-    def __init__(self, keyword) -> None:
+    def __init__(self) -> None:
         pass
 
     @staticmethod
