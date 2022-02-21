@@ -1,7 +1,7 @@
 import time
 from src import console
 def startGame():
-    time.sleep(5)
+    time.sleep(2)
     console.clearConsole()
     print("\t #-------------------------------------------------#")
     time.sleep(0.5)
@@ -24,7 +24,7 @@ def startGame():
     print("\t #-------------------------------------------------#")
     print()
     print()
-    input("\t Presione cualquier tecla para continuar...")
+    input("\t Presione la tecla ENTER para continuar...")
     time.sleep(1)
 def getData():
     console.clearConsole()
@@ -51,6 +51,8 @@ def initialScreen():
 def loseGame(answer):
     time.sleep(5)
     console.clearConsole()
+    print()
+    print()
     print("\t #-------------------------------------------------#")
     time.sleep(0.5)
     print("\t #-------------------------------------------------#")
@@ -68,11 +70,15 @@ def loseGame(answer):
     print("\t #-------------------------------------------------#")
     time.sleep(0.5)
     print("\t #-------------------------------------------------#")
-    input("\t Presione enter tecla para continuar")
+    print()
+    print()
+    input("\t Presione la tecla ENTER para continuar")
 
 def winGame(answer):
     time.sleep(5)
     console.clearConsole()
+    print()
+    print()
     print("\t #-------------------------------------------------#")
     time.sleep(0.5)
     print("\t #-------------------------------------------------#")
@@ -88,15 +94,9 @@ def winGame(answer):
     print("\t #-------------------------------------------------#")
     time.sleep(0.5)
     print("\t #-------------------------------------------------#")
-    input("\t Presione enter tecla para continuar")
-    
-
-def printGameSummary():
-    console.clearConsole()
-    print("GAME SUMMARY: ")
-    #print(data)
-    input("Presione enter para continuar ...")
-
+    print()
+    print()
+    input("\t Presione la tecla ENTER para continuar")
     
 
 def startNewGame():

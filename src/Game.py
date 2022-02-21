@@ -35,8 +35,9 @@ class Game:
     def renderVisuals(self):
         console.clearConsole()
         WordMap.printMap(self.usedWords,self.answer)
+        print()
         Keyboard.printKeyboard(self.usedLetters, self.answer)
-        print("answer: ",self.answer)
+        print()
 
     def updateUsedChars(self,word):
         for char in word:
@@ -54,9 +55,9 @@ class Game:
     def renderSummary(self):
         console.clearConsole()
         print("GAME SUMMARY: ")
-        
+        print()
         WordMap.printMapSummary(self.usedWords,self.answer,self.attemps)
-
+        print()
         input("Presione enter para continuar ...")
     def write_json(self,new_data, filename='records.json'):
         with open(filename,'r+') as file:
