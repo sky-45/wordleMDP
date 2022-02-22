@@ -5,6 +5,8 @@ from src.Keyboard import Keyboard
 from src.external import external
 import datetime
 import json
+from src.external import cosmosDB
+
 class Game:
     def __init__(self,dataSrc,name):
         self.dataSrc = dataSrc
@@ -47,6 +49,7 @@ class Game:
         jsonData["answer"] = self.answer
         jsonData["result"] = "win" if self.winingState else "lose"
         jsonData["atempts"] = self.attempsArr
+        cosmosDB.insertData(jsonData)
         self.write_json(jsonData)
     def renderSummary(self):
         console.clearConsole()
