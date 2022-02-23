@@ -20,10 +20,26 @@ class Game:
         self.attempsArr = []
         self.startTime = datetime.datetime.now().isoformat("T") + "Z"
     def getWord(self):
-        if self.dataSrc==1: #github
-            return external.getWordsGitHub(1)[0].upper()
-        elif self.dataSrc==2: #local
-            return external.getWordsLocalFile(1)[0].upper()
+        while True:
+            if self.dataSrc==1: #github
+                word = external.getWordsGitHub(1)[0].upper()
+            elif self.dataSrc==2: #local
+                word = external.getWordsLocalFile(1)[0].upper()
+            # can comment form here    
+            with open('palabras_por_fecha.json') as json_file:
+                data = json.load(json_file)
+                usedWords = list(data.values())
+            if word not in usedWords:
+                with open('palabras_por_fecha.json',"r+") as file:
+                    file_data = json.load(file)
+                    dateToday = datetime.datetime.today().strftime('%Y-%m-%d')
+                    file_data[dateToday] = word
+                    file.seek(0)
+                    json.dump(file_data, file, indent = 4)
+                # to here
+                return word
+
+
     def update(self,word):
         self.usedWords.append(word)
         self.updateUsedChars(word)

@@ -23,7 +23,12 @@ def getWordsGitHub(n):
     words = [cleanWord(word) for word in words if len(word)==5]
     words_5 = random.sample(words, 365)
     return random.sample(words_5,n)
-
+def getDictionary():
+    urlWords = "https://raw.githubusercontent.com/javierarce/palabras/master/listado-general.txt"
+    r = requests.get(urlWords)
+    words = r.text.split("\n")
+    words = [cleanWord(word) for word in words if len(word)==5]
+    return words
 def getWordsLocalFile(n):
     """
         This function retrieves 365 random words from 

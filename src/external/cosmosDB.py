@@ -18,5 +18,3 @@ container = database.get_container_client(CONTAINER_NAME)
 def insertData(data):
     container.upsert_item(data)
 
-
-

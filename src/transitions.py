@@ -1,5 +1,9 @@
 import time
 from src import console
+import datetime
+import json
+
+
 def startGame():
     time.sleep(2)
     console.clearConsole()
@@ -26,6 +30,8 @@ def startGame():
     print()
     input("\t Presione la tecla ENTER para continuar...")
     time.sleep(1)
+    
+
 def getData():
     console.clearConsole()
     name = input(" Ingrese su nombre: ")
@@ -117,3 +123,15 @@ def startNewGame():
         else:
             print("Solo puede ingresar el numero correspondiente a la opcion !!!")
         time.sleep(4)
+
+def checkTodayGame():
+    dateToday = datetime.datetime.today().strftime('%Y-%m-%d')
+    with open('palabras_por_fecha.json') as json_file:
+        data = json.load(json_file)
+        if dateToday in data.keys():
+            print("\t #-------------------------------------------------#")
+            time.sleep(0.5)
+            print("Ya jugaste hoy :c, intenta mañana !!!")
+            print("\t #-------------------------------------------------#")
+            time.sleep(4)
+            exit()

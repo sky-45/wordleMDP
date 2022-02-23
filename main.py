@@ -2,8 +2,13 @@ from src import transitions
 from src.Game import Game
 from src import console
 
+
 # iniciamos juego
 transitions.startGame()
+
+# revisamos si el juego ya se jugo hoy
+transitions.checkTodayGame()
+
 gameIsRunning = True
 
 while gameIsRunning:
